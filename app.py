@@ -26,10 +26,9 @@ trainer_corpus.train(
 app = Flask(__name__)
 
 
-@app.route("/get")
-def get_bet_response():
-    userText = request.args.get('msg')
-    return str(chatbot.get_response(userText))
+@app.route("/get/<msg>")
+def bot_respose(msg):
+    return str(chatbot.get_response(msg))
 
 
 if __name__ == "__main__":
