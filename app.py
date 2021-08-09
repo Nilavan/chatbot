@@ -5,7 +5,6 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 
 chatbot = ChatBot(
     'Chloe',
-    storage_adapter='chatterbot.storage.SQLStorageAdapter',
     logic_adapters=[
         'chatterbot.logic.BestMatch',
         {
@@ -13,7 +12,8 @@ chatbot = ChatBot(
             'default_response': 'I\'m sorry, I don\'t understand. I\'m still learning.',
             'maximum_similarity_threshold': 0.90
         }
-    ]
+    ],
+    database_uri='sqlite:///database.sqlite3'
 )
 
 trainer_corpus = ChatterBotCorpusTrainer(chatbot)
