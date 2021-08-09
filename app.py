@@ -13,13 +13,11 @@ chatbot = ChatBot(
             'default_response': 'I\'m sorry, I don\'t understand. I\'m still learning.',
             'maximum_similarity_threshold': 0.90
         }
-    ],
-    database_uri='sqlite:///database.sqlite3'
+    ]
 )
 
 trainer_corpus = ChatterBotCorpusTrainer(chatbot)
 trainer_corpus.train(
-    "./training_data/profile.yml",
     "./training_data/finance.yml"
 )
 
