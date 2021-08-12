@@ -1,5 +1,4 @@
 from flask import Flask
-
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
@@ -17,9 +16,7 @@ chatbot = ChatBot(
 )
 
 trainer_corpus = ChatterBotCorpusTrainer(chatbot)
-trainer_corpus.train(
-    "./training_data/finance.yml"
-)
+trainer_corpus.train("./training_data/finance.yml")
 
 app = Flask(__name__)
 
