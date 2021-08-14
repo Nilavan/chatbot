@@ -4,6 +4,7 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 
 chatbot = ChatBot(
     'Chloe',
+    storage_adapter='chatterbot.storage.SQLStorageAdapter',
     logic_adapters=[
         'chatterbot.logic.BestMatch',
         {
