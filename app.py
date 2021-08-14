@@ -1,6 +1,6 @@
 from flask import Flask
 from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
+from chatterbot.trainers import ListTrainer
 
 chatbot = ChatBot(
     'Chloe',
@@ -16,8 +16,16 @@ chatbot = ChatBot(
     database_uri='sqlite:///database.sqlite3'
 )
 
-trainer_corpus = ChatterBotCorpusTrainer(chatbot)
-trainer_corpus.train("./training_data/finance.yml")
+#trainer_corpus = ChatterBotCorpusTrainer(chatbot)
+# trainer_corpus.train("./training_data/finance.txt")
+
+training_fin = open('training_data/finance.txt').read().splitlines()
+training_greet = open('training_data/greet.txt').read().splitlines()
+training_bye = open('training_data/bye.txt').read().splitlines()
+
+training_data = training_greet + training_fin + training_bye
+trainer = ListTrainer(chatbot)
+trainer.train(training_data)
 
 app = Flask(__name__)
 
